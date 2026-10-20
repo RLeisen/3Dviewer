@@ -1,0 +1,88 @@
+@media (max-width: 760px) {
+  :root { --topbar-height: 56px; }
+
+  .topbar { padding: 0 10px 0 12px; }
+  .brand-copy small { display: none; }
+  .brand-mark { width: 32px; height: 32px; }
+  .primary-button { min-height: 36px; padding: 0 10px; }
+  .primary-button span { display: none; }
+  .topbar .icon-button { width: 35px; height: 36px; }
+  .separator { display: none; }
+
+  .workspace,
+  .workspace:has(.inspector.is-collapsed) {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) min(47svh, 430px);
+  }
+
+  .viewport { width: 100%; height: 100%; }
+
+  .workspace:has(.inspector.is-collapsed) {
+    grid-template-rows: minmax(0, 1fr) 0;
+  }
+
+  .inspector {
+    position: relative;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: 1px solid var(--line-strong);
+    border-left: 0;
+    box-shadow: 0 -10px 30px rgb(20 22 21 / 14%);
+    transform: translateY(0);
+  }
+
+  .inspector::before {
+    position: sticky;
+    top: 5px;
+    z-index: 2;
+    display: block;
+    width: 36px;
+    height: 4px;
+    margin: 5px auto -9px;
+    content: '';
+    background: #c1c4c0;
+    border-radius: 2px;
+  }
+
+  .inspector.is-collapsed {
+    visibility: hidden;
+    height: 0;
+    transform: translateY(100%);
+  }
+
+  .inspector-header { min-height: 72px; padding-top: 8px; }
+  .panel-section { padding-top: 15px; padding-bottom: 15px; }
+  .dimension-section { padding-bottom: 10px; }
+  .dimension-visual { min-height: 94px; }
+
+  .view-toolbar { top: 12px; }
+  .viewport-status { top: 64px; left: 12px; }
+  .measure-hint { top: 63px; max-width: calc(100% - 24px); white-space: nowrap; }
+  .scale-ruler { bottom: 18px; left: 14px; }
+  .axis-compass { right: 12px; bottom: 12px; }
+  .toast { bottom: 14px; }
+}
+
+@media (max-width: 420px) {
+  .brand-copy strong { font-size: 15px; }
+  .topbar { gap: 8px; }
+  .top-actions { gap: 2px; }
+  .topbar .icon-button { width: 32px; }
+  .view-toolbar .icon-button { width: 35px; }
+  .view-toolbar { max-width: calc(100% - 20px); }
+  .measure-hint span { overflow: hidden; text-overflow: ellipsis; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
